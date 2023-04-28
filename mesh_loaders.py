@@ -1,8 +1,15 @@
+import pybullet as p
+import pybullet_data
+import math
+import time
+import os
+import numpy as np
 
 class Mesh:
-
+    """Load a mesh into the simulation. Mass of the mesh is set to 0 so that it does not fall under gravity."""
     def __init__(
-        self, path = "./models/Ring/Ring.Ring.obj", 
+        
+        self, path = "./models/Ring/Ring.obj", 
         scale = [0.5, 0.1, 0.1], 
         shift = [0, 0, 0],
         positionXYZ = [0, 0, 1], 
@@ -11,8 +18,8 @@ class Mesh:
         ):
         self.path = path
         self.scale = scale
-        self.position = position
-        self.orientation = orientation
+        self.position = positionXYZ
+        self.orientation = orientationXYZ
         self.shift = shift
 
         self.visualShapeId = p.createVisualShape(
@@ -31,7 +38,7 @@ class Mesh:
             )
         
         self.bodyId = p.createMultiBody(
-            baseMass=1.0,
+            baseMass=0.0,
             baseCollisionShapeIndex=self.collisionShapeId,
             baseVisualShapeIndex=self.visualShapeId,
             basePosition=self.position,
@@ -43,3 +50,6 @@ class Mesh:
 
     def getCollisionShapeId(self):
         return self.collisionShapeId
+    
+    def getBodyId(self):
+        return self.bodyId
