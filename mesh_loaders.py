@@ -9,7 +9,7 @@ class Mesh:
     """Load a mesh into the simulation. Mass of the mesh is set to 0 so that it does not fall under gravity."""
     def __init__(
         
-        self, path = "./models/sphere/untitled.obj", 
+        self, path = "./assets/sphere/untitled.obj", 
         scale = [0.5, 0.1, 0.1], 
         shift = [0, 0, 0],
         positionXYZ = [0, 0, 1], 
