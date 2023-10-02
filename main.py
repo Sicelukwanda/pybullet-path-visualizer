@@ -62,7 +62,7 @@ total_uncertainty = total_uncertainty / np.max(total_uncertainty)
 for i in range(0,num_waypoints-1):
     print("Adding mesh {}".format(i))
     pos = samples_mu[i]
-    color = cm.viridis(total_uncertainty[i])[:3]
+    color = cm.inferno(total_uncertainty[i])[:3] # cm.viridis is also a good option here :)
     print(color)
     mesh = Mesh(
         scale = samples_std[i]*SCALE, 
