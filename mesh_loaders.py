@@ -9,24 +9,26 @@ class Mesh:
     """Load a mesh into the simulation. Mass of the mesh is set to 0 so that it does not fall under gravity."""
     def __init__(
         
-        self, path = "./models/Ring/Ring.obj", 
+        self, path = "./models/sphere/untitled.obj", 
         scale = [0.5, 0.1, 0.1], 
         shift = [0, 0, 0],
         positionXYZ = [0, 0, 1], 
+        rgbColor = [0.0, 1.0, 0.0],
         orientationXYZ = [0, 0, 0],
-        alpha = 1.0
+        alpha = 0.1
         ):
         self.path = path
         self.scale = scale
         self.position = positionXYZ
         self.orientation = orientationXYZ
         self.shift = shift
+        self.rgbColor = list(rgbColor)
 
         self.visualShapeId = p.createVisualShape(
             shapeType=p.GEOM_MESH, 
             fileName=self.path,
-            rgbaColor=[1.0, 1.0, 1.0, alpha], 
-            specularColor=[0.4, .4, 0],
+            rgbaColor=self.rgbColor+[alpha], 
+            specularColor=[0.0, 0.0, 0.0],
             meshScale=self.scale, 
             visualFramePosition=self.shift
             )
